@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 IntelliFinance | AI-Powered Audit Dashboard
 
-## Getting Started
+IntelliFinance es una solución de vanguardia diseñada para automatizar la captura y auditoría de datos financieros. Este proyecto demuestra la integración de Next.js 15+, Supabase y Visión Artificial (OCR) para eliminar el error humano en la gestión contable.
 
-First, run the development server:
+## 🎯 Impacto en el Negocio
+
+En el sector contable, la captura manual de facturas consume hasta el 30% del tiempo de un auditor. IntelliFinance reduce este tiempo a segundos mediante:
+
+- **Automatización**: Extracción de datos mediante IA directamente en el navegador.
+- **Trazabilidad**: Sistema de estados (Processing, Verified, Error) para control de auditoría.
+- **Escalabilidad**: Arquitectura Serverless desplegada en el Edge para respuesta global instantánea.
+
+## 🏗️ Arquitectura Técnica (Tier S)
+
+- **Frontend**: React 19 + Next.js (App Router). Uso extensivo de Server Actions para comunicación segura con la BD.
+- **Estado & Datos**: Supabase como motor de base de datos relacional con Row Level Security (RLS) activado.
+- **Motor de IA**: Tesseract.js para procesamiento OCR distribuido (Client-side), ahorrando costos de servidor.
+- **Rendimiento**: Implementación de SSR para dashboards dinámicos y SSG para secciones informativas, optimizando el Core Web Vitals.
+
+## 🚀 Instalación Rápida
+
+### Clonar y Preparar
+
+```bash
+git clone https://github.com/tu-usuario/intellifinance-mvp.git
+cd intellifinance-mvp
+npm install
+```
+
+### Variables de Env (.env.local)
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=tu_url_de_supabase
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key
+```
+
+### Ejecutar
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧪 Calidad y Testing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Se ha implementado Vitest para garantizar la integridad de los cálculos financieros:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Pruebas unitarias para funciones de agregación de montos.
+- Validación de Regex para extracción de datos OCR.
 
-## Learn More
+Ejecutar con:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📈 Roadmap de Ingeniería (Fase 2)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Análisis Predictivo**: Integración de modelos para detectar duplicidad de facturas.
+- **Multi-tenant**: Soporte para múltiples firmas de auditoría con aislamiento de datos.
+- **Mobile App**: Versión en React Native para captura de tickets en campo.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Desarrollado con pasión por Julio Bustamante**  
+*Software Engineer | Experto en Ecosistemas Web & IA*

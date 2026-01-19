@@ -1,6 +1,7 @@
 'use client'
 import { useMemo } from "react"
 import { Transaction } from "@/app/lib/types"
+import { calculateFinancials } from "@/lib/utils"
 
 interface MetricCardsProps {
     transactions: Transaction[]
@@ -8,26 +9,7 @@ interface MetricCardsProps {
 
 export const MetricCards = ({ transactions }: MetricCardsProps) => {
 
-    const stats = useMemo(() => {
-        const total = transactions.reduce((acc, curr) => acc + Number(curr.amount), 0)
-        
-        // Calcular gastos del mes actual (usando transaction_date si existe, o created_at)
-        const currentMonth = new Date().getMonth()
-        const currentYear = new Date().getFullYear()
-        
-        const monthly = transactions.reduce((acc, curr) => {
-            const date = new Date(curr.transaction_date || curr.created_at)
-            if (date.getMonth() === currentMonth && date.getFullYear() === currentYear) {
-                return acc + Number(curr.amount)
-            }
-            return acc
-        }, 0)
-
-        const aiCount = transactions.filter(t => t.is_ai_processed).length
-        const aiSavedHours = (aiCount * 5 / 60).toFixed(1) // Asumiendo 5 min por factura manual vs instantáneo
-
-        return { total, monthly, aiCount, aiSavedHours }
-    }, [transactions])
+    const stats = useMemo(() => calculateFinancials(transactions), [transactions])
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 animate-fade-in">
