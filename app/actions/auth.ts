@@ -125,5 +125,13 @@ export async function login(formData: FormData): Promise<AuthActionResponse> {
     revalidatePath("/", "layout")
 
     // Redirigimos al dashboard después del login exitoso
+    revalidatePath("/", "layout")
     redirect("/dashboard")
+}
+
+export async function signout() {
+    const supabase = await createClient()
+    await supabase.auth.signOut()
+    revalidatePath("/", "layout")
+    redirect("/login")
 }
